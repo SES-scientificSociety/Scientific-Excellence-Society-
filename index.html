@@ -70,6 +70,32 @@
       transition: background-color 0.4s ease, color 0.4s ease;
     }
 
+    .brand-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: 3px;
+      text-decoration: none;
+
+      background: linear-gradient(135deg, #60a5fa, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+
+      transition: 0.3s ease;
+    }
+
+    .brand-name:hover {
+      transform: scale(1.05);
+    }
+
+    .brand-name span {
+      background: linear-gradient(135deg, #06b6d4, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
     h1,
     h2,
     h3,
@@ -275,7 +301,7 @@
     /* ===== HERO ===== */
     .hero {
       position: relative;
-      padding-top: 110px;
+      padding-top: 60px;
       /* Sirf top padding */
       padding-bottom: 80px;
       /* Sirf bottom padding */
@@ -646,14 +672,14 @@
     /* ===== TEAM ===== */
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
     }
 
     .team-card {
       background: var(--bg-card);
       border-radius: var(--radius-card);
-      padding: 28px 20px;
+      padding: 20px 15px;
       text-align: center;
       box-shadow: var(--shadow-deep);
       border: 1px solid var(--border);
@@ -666,8 +692,8 @@
     }
 
     .team-avatar {
-      width: 100px;
-      height: 100px;
+      width: 105px;
+      height: 105px;
       border-radius: 50%;
       margin: 0 auto 16px;
       overflow: hidden;
@@ -1114,6 +1140,8 @@
       }
     }
   </style>
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -1139,8 +1167,8 @@
     <div class="modal">
       <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
       <div id="regForm">
-        <h2>🎓 Join SES 2026</h2>
-        <p>Fill in your details to register for the Scientific Excellence Society.</p>
+        <h2>🎓 Join the SES Community</h2>
+        <p>Fill in your details and join the Scientific Excellence Society community.</p>
         <div class="form-row">
           <div class="form-group">
             <label for="reg-fname">First Name</label>
@@ -1179,7 +1207,7 @@
           <label for="reg-msg">Why do you want to join? (optional)</label>
           <textarea id="reg-msg" placeholder="Tell us about your research interests..."></textarea>
         </div>
-        <button class="form-submit" onclick="submitForm()">Submit Registration 🚀</button>
+        <button class="form-submit" onclick="submitForm()">Join SES Community 🚀</button>
       </div>
       <div class="success-msg" id="successMsg">
         <div class="check">✅</div>
@@ -1195,6 +1223,9 @@
   <nav class="navbar reveal active">
     <div class="brand">
       <img src="images/ses_logo.png" alt="SES Logo" class="brand-logo-img">
+      <a href="#home" class="brand-name">
+        <span>S</span><span>E</span>S </a>
+
     </div>
     <div class="nav-links">
       <a href="#about">About</a>
@@ -1224,8 +1255,9 @@
           Observe, Learn, Innovate
         </div>
         <h1>Elevating <span class="text-gradient">research, science &amp; innovation</span> for tomorrow.</h1>
-        <p class="hero-desc">We are an academic organization dedicated to fostering scientific excellence, collaborative
-          research, and bridging the gap between students and global innovation.</p>
+        <p class="hero-desc">Our aim is to motivate students and young minds towards Scienence through Hands-on live
+          Experiments, Workshops, Seminars By bridging the gap between students and global innovation, we aim to ignite
+          a lifelong passion for science.</p>
         <div class="hero-ctas">
           <button class="btn btn-primary" onclick="openModal()">Join the Society</button>
           <a href="#events"><button class="btn btn-secondary">Explore Events</button></a>
@@ -1253,7 +1285,7 @@
           <img src="images/ses_labs_poster.png" alt="SES Labs Badin">
         </div>
         <div class="gallery-card card-3">
-          <img src="images/ses_logo.png" alt="SES Logo" style="object-fit:contain;padding:20px;background:#111827;">
+          <img src="images/ses_logos.png" alt="SES Logo" style="object-fit:contain;padding:20px;background:#111827;">
         </div>
       </div>
     </div>
@@ -1270,7 +1302,7 @@
         <div class="card-icon">🎯</div>
         <h3>Our Mission</h3>
         <p>To cultivate a scientifically literate community by providing unparalleled access to resources, mentorship,
-          and empirical research opportunities for aspiring scholars in Sindh and beyond.</p>
+          and empirical research opportunities for aspiring scholars in Pakistan & beyond.</p>
       </div>
       <div class="bento-card card-featured">
         <span class="badge-featured">Featured</span>
@@ -1371,53 +1403,52 @@
   </section>
 
   <!-- ===== TEAM ===== -->
-  <section id="team" class="container reveal">
-    <div class="section-header">
-      <div class="section-tag">👥 The People</div>
-      <h2>Meet the Team</h2>
+  <div class="team-grid">
+
+    <div class="team-card">
+      <div class="team-avatar"><img src="images/team_1.png" alt="Sir. Dil Nawaz"></div>
+      <h4>Sir. M.D</h4>
+      <div class="team-role">President & Founder</div>
+      <p style="font-size:0.83rem;">Research leader with expertise in Nanoparticles synthesis and science education.</p>
+      <div class="team-socials"></div>
     </div>
-    <div class="team-grid">
-      <div class="team-card">
-        <div class="team-avatar"><img src="images/team_1.png" alt="Sir. Dil Nawaz"></div>
-        <h4>Sir. M.D</h4>
-        <div class="team-role">President &amp; Founder</div>
-        <p style="font-size:0.83rem;">Research leader with expertise in Nanoparticles synthesis and science education.
-        </p>
-        <div class="team-socials">
 
-
-        </div>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar"><img src="images/team_2.png" alt="Fatima Shaikh"></div>
-        <h4>Nasarullah</h4>
-        <div class="team-role">Vice President</div>
-        <p style="font-size:0.83rem;">Coordinator of research programs and inter-institutional collaborations.</p>
-        <div class="team-socials">
-
-        </div>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar"><img src="images/team_3.png" alt="Usman Ali"></div>
-        <h4>Ayesha Shaikh</h4>
-        <div class="team-role">Head of Events</div>
-        <p style="font-size:0.83rem;">Drives SES workshops, science galas, and community outreach programs.</p>
-        <div class="team-socials">
-
-        </div>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar"><img src="images/team_4.png" alt="Sana Memon"></div>
-        <h4>Sirajum Monira Sifa</h4>
-        <div class="team-role">Supportive Coordinator & Ambassador</div>
-        <p style="font-size:0.83rem;">Oversees member activities and organization promotion.</p>
-        <div class="team-socials">
-
-
-        </div>
-      </div>
+    <div class="team-card">
+      <div class="team-avatar"><img src="images/team_2.png" alt="Fatima Shaikh"></div>
+      <h4>Nasarullah</h4>
+      <div class="team-role">Vice President</div>
+      <p style="font-size:0.83rem;">Coordinator of research programs and inter-institutional collaborations.</p>
+      <div class="team-socials"></div>
     </div>
-  </section>
+
+    <div class="team-card">
+      <div class="team-avatar"><img src="images/team_3.png" alt="Usman Ali"></div>
+      <h4>Ayesha Shaikh</h4>
+      <div class="team-role">Head of Events</div>
+      <p style="font-size:0.83rem;">Drives SES workshops, science galas, and community outreach programs.</p>
+      <div class="team-socials"></div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-avatar"><img src="images/team_4.png" alt="Sana Memon"></div>
+      <h4>Sirajum Monira Sifa</h4>
+      <div class="team-role">Supportive Coordinator & Ambassador</div>
+      <p style="font-size:0.83rem;">Oversees member activities and organization promotion.</p>
+      <div class="team-socials"></div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-avatar"><img src="images/team_5.png" alt="Jameel Ahmed"></div>
+      <h4>Jameel Ahmed</h4>
+      <div class="team-role">General Secretary</div>
+      <p style="font-size:0.83rem;">
+        Manages official correspondence, records meeting minutes, and maintains up-to-date membership rosters and event
+        documentation.
+      </p>
+      <div class="team-socials"></div>
+    </div>
+
+  </div>
 
   <!-- ===== COLLABORATION ===== -->
   <section id="collaboration" class="container reveal">
@@ -1488,7 +1519,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <img src="images/ses_logo.png" alt="SES Logo">
-          <p>Scientific Excellence Society — empowering young researchers in Sindh and beyond since 2022.</p>
+          <p>Scientific Excellence Society — empowering young researchers in Sindh and beyond since 2025.</p>
         </div>
         <div class="footer-col">
           <h5>Quick Links</h5>
@@ -1499,16 +1530,15 @@
           <a href="#contact">Contact</a>
         </div>
         <div class="footer-col">
-          <h5>Connect (will be announced soon) </h5>
-          <a href="#">Instagram</a>
-          <a href="#">Facebook</a>
-          <a href="#">LinkedIn</a>
-          <a href="#">WhatsApp</a>
+          <h5>Connect</h5>
+          <a href="https://www.instagram.com/ses_organization/">Instagram</a>
+          <a href="www.linkedin.com/in/scientific-excellence-society-ses">LinkedIn</a>
+          <a href="https://wa.me/+923293184739">WhatsApp</a>
           <a href="mailto:ses1info09@gmail.com">Email</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2026 Scientific Excellence Society (SES). All rights reserved. | Badin, Sindh, Pakistan</p>
+        <p>© 2026 Scientific Excellence Society (SES). All rights reserved. | Hyderabad, Pakistan</p>
       </div>
     </div>
   </footer>
@@ -1598,11 +1628,22 @@
     document.getElementById('modalClose').addEventListener('click', closeModal);
     modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
     function submitForm() {
+
       const fname = document.getElementById('reg-fname').value.trim();
+      const lname = document.getElementById('reg-lname').value.trim();
       const email = document.getElementById('reg-email').value.trim();
-      if (!fname || !email) { alert('Please fill in your name and email to continue.'); return; }
-      document.getElementById('regForm').style.display = 'none';
-      document.getElementById('successMsg').style.display = 'block';
+      const phone = document.getElementById('reg-phone').value.trim();
+      const institution = document.getElementById('reg-institution').value.trim();
+      const interest = document.getElementById('reg-interest').value;
+
+      if (!fname || !email || !phone || !institution || !interest) {
+        alert('Please fill all required fields.');
+        return;
+      }
+
+      alert('Welcome to SES Community! Redirecting to WhatsApp...');
+
+      window.location.href = "https://chat.whatsapp.com/L3CrcUa8QVzDgEFQ8CcHmt";
     }
 
     // ===== SMOOTH SCROLL =====
