@@ -985,7 +985,7 @@
     }
 
     .section-header {
-      margin-bottom: 56px;
+      margin-bottom: 40px;
       text-align: center;
     }
 
@@ -1019,7 +1019,7 @@
     .bento-card {
       background: var(--bg-card);
       border-radius: var(--radius-card);
-      padding: 36px;
+      padding: 28px;
       box-shadow: var(--shadow-deep);
       position: relative;
       overflow: hidden;
@@ -1077,6 +1077,135 @@
       border-radius: 999px;
       font-size: 0.72rem;
       font-weight: 700;
+    }
+
+    /* ===== CONSOLIDATED LAYOUTS (fewer boxed containers, same visual style) ===== */
+    .info-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .info-row:last-child {
+      border-bottom: none;
+      padding-bottom: 4px;
+    }
+
+    .info-row:first-child {
+      padding-top: 4px;
+    }
+
+    .info-row .card-icon {
+      margin-bottom: 0;
+      flex-shrink: 0;
+    }
+
+    .info-row h3 {
+      margin-bottom: 4px;
+    }
+
+    .process-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .process-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .process-item:nth-child(-n+3) {
+      border-top: none;
+    }
+
+    @media (max-width: 700px) {
+      .process-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .process-item .step-number {
+      width: 32px;
+      height: 32px;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    .process-item h4 {
+      font-size: 0.92rem;
+      margin-bottom: 2px;
+    }
+
+    .process-item p {
+      font-size: 0.8rem;
+    }
+
+    .tier-columns {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .tier-col {
+      padding: 30px 24px;
+      text-align: center;
+      position: relative;
+      border-right: 1px solid var(--border);
+    }
+
+    .tier-col:last-child {
+      border-right: none;
+    }
+
+    @media (max-width: 820px) {
+      .tier-columns {
+        grid-template-columns: 1fr;
+      }
+
+      .tier-col {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 26px 12px;
+      }
+
+      .tier-col:last-child {
+        border-bottom: none;
+      }
+    }
+
+    .badge-strip {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px 32px;
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .badge-strip-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .badge-strip-item .badge-icon {
+      font-size: 1.1rem;
+    }
+
+    .badge-strip-item strong {
+      color: var(--text-dark);
     }
 
     /* ===== PROCESS (auto-sliding carousel on all screen sizes) ===== */
@@ -1983,6 +2112,20 @@
       gap: 28px;
     }
 
+    .trust-grid>div:first-child {
+      border-right: 1px solid var(--border);
+      padding-right: 28px;
+    }
+
+    @media (max-width: 780px) {
+      .trust-grid>div:first-child {
+        border-right: none;
+        padding-right: 0;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 24px;
+      }
+    }
+
     .trust-panel {
       background: var(--bg-surface);
       border: 1px solid var(--border);
@@ -2460,6 +2603,7 @@
         transition-duration: 0.01ms !important;
       }
     }
+
     /* ===== BACK TO TOP ===== */
     .back-to-top {
       position: fixed;
@@ -2535,6 +2679,194 @@
         width: 48px;
         height: 48px;
         font-size: 1.3rem;
+      }
+    }
+
+    /* ==========================================
+   CERTIFICATE PORTAL STYLES (Glassmorphism)
+=========================================== */
+    .certificate-section {
+      padding: 80px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* Agar website ka apna background hai to isko hata sakte hain */
+      background: transparent;
+    }
+
+    .cert-glass-container {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 40px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .cert-header .cert-badge {
+      background: rgba(74, 144, 226, 0.2);
+      color: #4a90e2;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    .cert-header h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .cert-header p {
+      font-size: 1rem;
+      opacity: 0.8;
+      margin-bottom: 30px;
+    }
+
+    .cert-search-box {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .cert-search-box input {
+      flex: 1;
+      padding: 15px 20px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(0, 0, 0, 0.2);
+      /* Dark mode input */
+      color: inherit;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .cert-search-box input:focus {
+      border-color: #4a90e2;
+      box-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
+    }
+
+    .cert-search-box button {
+      padding: 0 30px;
+      border-radius: 12px;
+      border: none;
+      background: #4a90e2;
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cert-search-box button:hover {
+      background: #357abd;
+      transform: translateY(-2px);
+    }
+
+    .cert-result {
+      margin-top: 30px;
+      padding: 25px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: left;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .cert-result.success {
+      border-left: 5px solid #2ecc71;
+    }
+
+    .cert-result.error {
+      border-left: 5px solid #e74c3c;
+      text-align: center;
+    }
+
+    .cert-detail-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .cert-detail-row:last-child {
+      border-bottom: none;
+    }
+
+    .cert-detail-label {
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+
+    .cert-detail-value {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .download-btn {
+      display: block;
+      width: 100%;
+      margin-top: 20px;
+      padding: 15px;
+      background: #2ecc71;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .download-btn:hover {
+      background: #27ae60;
+      transform: translateY(-2px);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 600px) {
+      .cert-search-box {
+        flex-direction: column;
+      }
+
+      .cert-search-box button {
+        padding: 15px;
+      }
+
+      .cert-detail-row {
+        flex-direction: column;
+      }
+
+      .cert-detail-value {
+        margin-top: 5px;
       }
     }
   </style>
@@ -2673,9 +3005,51 @@
           <div class="live-dot"></div>
           Observe, Learn, Innovate
         </div>
+
+        <!-- ==========================================
+     SES CERTIFICATE PORTAL SECTION (Top of Hero for Mobile Visibility)
+=========================================== -->
+        <div style="margin-top: 20px; margin-bottom: 30px; animation: slideUp 0.6s ease-out;">
+          <button class="btn btn-primary" onclick="toggleCertificatePortal()"
+            style="background: var(--primary); box-shadow: 0 8px 25px rgba(29, 78, 216, 0.4); border: 2px solid rgba(255,255,255,0.1); width: 100%; max-width: 450px; font-size: 1.15rem; padding: 18px; border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 10px;">
+            🎓 Get Your Certificate Now
+          </button>
+
+          <div id="certificate-portal" class="certificate-section hidden"
+            style="padding: 25px 0 10px; justify-content: flex-start; text-align: left; animation: fadeIn 0.4s ease;">
+            <div class="cert-glass-container"
+              style="background: var(--bg-card); border: 1px solid var(--border); box-shadow: var(--shadow-deep); max-width: 100%; text-align: left; padding: 30px; border-radius: 20px;">
+              <div class="cert-header">
+                <span class="cert-badge"
+                  style="background: var(--bg-radial-one); color: var(--primary); padding: 6px 14px; border-radius: 20px; font-weight: 600; display: inline-block; margin-bottom: 12px; font-size: 0.85rem;">AI
+                  in Education Seminar</span>
+                <h2 style="color: var(--text-dark); margin-bottom: 8px; font-size: 1.6rem;">🎓 Download Certificate
+                </h2>
+                <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.95rem;">Enter your SES Roll Number
+                  to verify and download your official certificate.</p>
+              </div>
+
+              <div class="cert-search-box" style="display: flex; gap: 12px;">
+                <input type="text" id="rollNumberInput" placeholder="e.g., SES118" autocomplete="off"
+                  style="flex: 1; padding: 14px 20px; border-radius: var(--radius-btn); border: 1px solid var(--border); background: var(--bg-surface); color: var(--text-dark); outline: none; font-size: 1rem; transition: 0.3s;">
+                <button id="verifyBtn" onclick="verifyCertificate()" class="btn btn-primary"
+                  style="padding: 0 28px; border: none; font-size: 1rem;">
+                  <span id="btnText">Verify</span>
+                  <span id="btnLoader" class="hidden">⏳</span>
+                </button>
+              </div>
+
+              <!-- Result Card (Hidden by default) -->
+              <div id="certResult" class="cert-result hidden"
+                style="margin-top: 24px; padding: 20px; border-radius: 16px; background: var(--bg-surface); border: 1px solid var(--border);">
+                <!-- Dynamic content will be injected here via JavaScript -->
+              </div>
+            </div>
+          </div>
+        </div>
+
         <h1>Elevating <span class="text-gradient">research, science &amp; innovation</span> for tomorrow.</h1>
-        <p class="hero-desc" id="heroDesc">We motivate students across Sindh through hands-on science labs,
-          workshops &amp; seminars — turning curiosity into a lifelong passion for science.</p>
+        <p class="hero-desc" id="heroDesc">Hands-on science labs and workshops for students across Sindh.</p>
         <div class="hero-ctas">
           <button class="btn btn-primary" onclick="goToWhatsAppRegister()">Join the Society</button>
           <a href="#events"><button class="btn btn-secondary">Explore Events</button></a>
@@ -2698,11 +3072,11 @@
       <div class="hero-gallery">
         <div class="gallery-card card-1">
           <div class="glass-shine"></div>
-          <img src="images/ai_masterclass.jpg" alt="AI Masterclass Event">
+          <img src="images/ses_labs_poster.png" alt="AI Masterclass Event">
         </div>
         <div class="gallery-card card-2">
           <div class="glass-shine"></div>
-          <img src="images/ses_labs_poster.png" alt="SES Labs Badin">
+          <img src="images/ai_masterclass.png" alt="SES Labs Badin">
         </div>
         <div class="gallery-card card-3">
           <div class="glass-shine"></div>
@@ -2717,25 +3091,29 @@
       <div class="section-tag">🔬 Core Ideology</div>
       <h2>Who We Are</h2>
     </div>
-    <div class="bento-grid">
-      <div class="bento-card">
-        <div class="card-icon">🎯</div>
-        <h3>Our Mission</h3>
-        <p>To cultivate a scientifically literate community by providing unparalleled access to resources, mentorship,
-          and empirical research opportunities for aspiring scholars in Pakistan & beyond.</p>
-      </div>
-      <div class="bento-card card-featured">
-        <span class="badge-featured">Featured</span>
-        <div class="card-icon">🌟</div>
-        <h3>Our Vision</h3>
-        <p>A thriving ecosystem where academic curiosity seamlessly transitions into real-world technological and
-          scientific breakthroughs that benefit communities worldwide.</p>
-      </div>
-      <div class="bento-card">
-        <div class="card-icon">⚖️</div>
-        <h3>Our Values</h3>
-        <p>Integrity in research, inclusivity in opportunity, and an unwavering commitment to empirical truth and
-          sustainable innovation for the next generation.</p>
+    <div class="bento-card">
+      <div class="info-list">
+        <div class="info-row">
+          <div class="card-icon">🎯</div>
+          <div>
+            <h3>Our Mission</h3>
+            <p>Give students in Pakistan real access to research, mentorship, and hands-on science.</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="card-icon">🌟</div>
+          <div>
+            <h3>Our Vision</h3>
+            <p>Turn student curiosity into real scientific and technological breakthroughs.</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="card-icon">⚖️</div>
+          <div>
+            <h3>Our Values</h3>
+            <p>Integrity, inclusivity, and a commitment to real research.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -2745,42 +3123,51 @@
       <div class="section-tag">⚙️ Operations</div>
       <h2>How It Works</h2>
     </div>
-    <div class="swipe-hint">👉 Swipe to explore all 6 steps</div>
-    <div class="process-grid">
-      <div class="process-step">
-        <div class="step-number">01</div>
-        <h4>Application Phase</h4>
-        <p>Submit your academic portfolio and research interests to our review committee for evaluation.</p>
+    <div class="bento-card">
+      <div class="process-list">
+        <div class="process-item">
+          <div class="step-number">01</div>
+          <div>
+            <h4>Apply</h4>
+            <p>Submit your interests for review.</p>
+          </div>
+        </div>
+        <div class="process-item">
+          <div class="step-number">02</div>
+          <div>
+            <h4>Onboard</h4>
+            <p>Learn our lab tools and guidelines.</p>
+          </div>
+        </div>
+        <div class="process-item">
+          <div class="step-number">03</div>
+          <div>
+            <h4>Join a Team</h4>
+            <p>Get placed in your discipline cohort.</p>
+          </div>
+        </div>
+        <div class="process-item">
+          <div class="step-number">04</div>
+          <div>
+            <h4>Research</h4>
+            <p>Build ideas with expert mentorship.</p>
+          </div>
+        </div>
+        <div class="process-item">
+          <div class="step-number">05</div>
+          <div>
+            <h4>Peer Review</h4>
+            <p>Present findings for feedback.</p>
+          </div>
+        </div>
+        <div class="process-item">
+          <div class="step-number">06</div>
+          <div>
+            <h4>Showcase</h4>
+            <p>Present your work at our annual gala.</p>
+          </div>
+        </div>
       </div>
-      <div class="process-step">
-        <div class="step-number">02</div>
-        <h4>Onboarding &amp; Orientation</h4>
-        <p>Get acquainted with our lab protocols, digital tools, and community guidelines.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-number">03</div>
-        <h4>Team Allocation</h4>
-        <p>Join a specialized cohort based on your primary scientific discipline.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-number">04</div>
-        <h4>Research &amp; Ideation</h4>
-        <p>Develop abstracts and prototype frameworks under expert mentorship.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-number">05</div>
-        <h4>Peer Review</h4>
-        <p>Present findings to the society for constructive feedback and validation.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-number">06</div>
-        <h4>Publication &amp; Exhibition</h4>
-        <p>Showcase finalized posters and papers at our annual scientific gala.</p>
-      </div>
-    </div>
-    <div class="gallery-controls">
-      <button class="gallery-control" id="processPrev" aria-label="Previous step">&lsaquo;</button>
-      <button class="gallery-control" id="processNext" aria-label="Next step">&rsaquo;</button>
     </div>
   </section>
 
@@ -2788,24 +3175,25 @@
     <div class="section-header">
       <div class="section-tag">📅 Always Something Next</div>
       <h2>Events &amp; Programs</h2>
-      <p style="max-width:560px;margin:12px auto 0;color:var(--text-muted);">SES Labs programs move from school to
-        school across Sindh — as soon as one wraps up, planning for the next one begins.</p>
+      <p style="max-width:560px;margin:12px auto 0;color:var(--text-muted);">New programs, every term, across
+        Sindh.</p>
     </div>
     <div class="events-grid">
       <div class="event-card">
         <img src="images/ai_masterclass.jpg" alt="AI Masterclass" class="event-img">
         <div class="event-info">
           <div class="event-meta">
+            <span class="event-tag" style="background: rgba(231, 76, 60, 0.1); color: #e74c3c;">Completed</span>
             <span class="event-tag">Masterclass</span>
-            <span class="event-tag">Free</span>
           </div>
           <h3>Study Better, Think Smarter in the Age of AI</h3>
-          <p>SES Masterclass: Unleashing AI in the Classroom — a free session for school &amp; college students to
-            harness AI tools for academics.</p>
-          <div class="event-date">📆 July 14 &amp; 15 &nbsp;|&nbsp; 11:00 am – 12:00 pm</div>
+          <p>A free session on using AI tools for school &amp; college studies.</p>
+          <div class="event-date">📆 July 14 &amp; 15 &nbsp;|&nbsp; (Event Concluded)</div>
           <br>
-          <button class="btn btn-primary" onclick="goToWhatsAppRegister()" style="padding:10px 22px;font-size:0.88rem;">Register
-            for Free</button>
+          <button class="btn btn-secondary"
+            style="padding:10px 22px; font-size:0.88rem; opacity: 0.6; cursor: not-allowed;">
+            Registration Closed
+          </button>
         </div>
       </div>
       <div class="event-card">
@@ -2816,11 +3204,11 @@
             <span class="event-tag">Sindh</span>
           </div>
           <h3>SES Labs — Next School, Next Area</h3>
-          <p>A 5–10 day hands-on science lab program, run directly inside a school in a new area of Sindh —
-            motivating students through real experiments, not just theory.</p>
+          <p>A 5–10 day hands-on science lab program inside a new school in Sindh.</p>
           <div class="event-date">📍 Location Announced Soon &nbsp;|&nbsp; 2026</div>
           <br>
-          <button class="btn btn-secondary" onclick="goToWhatsAppRegister()" style="padding:10px 22px;font-size:0.88rem;">Stay
+          <button class="btn btn-secondary" onclick="goToWhatsAppRegister()"
+            style="padding:10px 22px;font-size:0.88rem;">Stay
             Updated</button>
         </div>
       </div>
@@ -2832,11 +3220,11 @@
             <span class="event-tag">Sindh-wide</span>
           </div>
           <h3>More Events, Continuously</h3>
-          <p>Every SES Labs program is followed by planning for the next one — new schools, new areas, new cohorts
-            of students, on a rolling basis throughout the year.</p>
+          <p>New schools and cohorts join throughout the year.</p>
           <div class="event-date">📆 Rolling Schedule &nbsp;|&nbsp; Check Gallery for updates</div>
           <br>
-          <button class="btn btn-secondary" onclick="goToWhatsAppRegister()" style="padding:10px 22px;font-size:0.88rem;">Join
+          <button class="btn btn-secondary" onclick="goToWhatsAppRegister()"
+            style="padding:10px 22px;font-size:0.88rem;">Join
             the Society</button>
         </div>
       </div>
@@ -2855,8 +3243,7 @@
         <div class="team-avatar"><img src="images/team_1.png" alt="Sir. Dil Nawaz"></div>
         <h4>Sir. M.D</h4>
         <div class="team-role">President & Founder</div>
-        <p style="font-size:0.83rem;">Research leader with expertise in Nanoparticles synthesis and science education.
-        </p>
+        <p style="font-size:0.83rem;">Nanoparticles &amp; science education.</p>
         <div class="team-socials"></div>
       </div>
 
@@ -2864,7 +3251,7 @@
         <div class="team-avatar"><img src="images/team_2.png" alt="Fatima Shaikh"></div>
         <h4>Nasarullah</h4>
         <div class="team-role">Vice President</div>
-        <p style="font-size:0.83rem;">Coordinator of research programs and inter-institutional collaborations.</p>
+        <p style="font-size:0.83rem;">Research programs &amp; collaborations.</p>
         <div class="team-socials"></div>
       </div>
 
@@ -2872,7 +3259,7 @@
         <div class="team-avatar"><img src="images/team_3.png" alt="Usman Ali"></div>
         <h4>Ayesha Shaikh</h4>
         <div class="team-role">Head of Events</div>
-        <p style="font-size:0.83rem;">Drives SES workshops, science galas, and community outreach programs.</p>
+        <p style="font-size:0.83rem;">Workshops, galas &amp; outreach.</p>
         <div class="team-socials"></div>
       </div>
 
@@ -2880,7 +3267,7 @@
         <div class="team-avatar"><img src="images/team_4.png" alt="Sana Memon"></div>
         <h4>Sirajum Monira Sifa</h4>
         <div class="team-role">Supportive Coordinator & Ambassador</div>
-        <p style="font-size:0.83rem;">Oversees member activities and organization promotion.</p>
+        <p style="font-size:0.83rem;">Member activities &amp; promotion.</p>
         <div class="team-socials"></div>
       </div>
 
@@ -2888,11 +3275,7 @@
         <div class="team-avatar"><img src="images/team_5.png" alt="Jameel Ahmed"></div>
         <h4>Jameel Ahmed</h4>
         <div class="team-role">General Secretary</div>
-        <p style="font-size:0.83rem;">
-          Manages official correspondence, records meeting minutes, and maintains up-to-date membership rosters and
-          event
-          documentation.
-        </p>
+        <p style="font-size:0.83rem;">Records, rosters &amp; documentation.</p>
         <div class="team-socials"></div>
       </div>
 
@@ -2913,8 +3296,8 @@
       <div class="section-header">
         <div class="section-tag">📸 Moments</div>
         <h2>Event Gallery</h2>
-        <p style="max-width:540px;margin:12px auto 0;color:var(--text-muted);">A glimpse into our workshops, seminars,
-          and lab activities. Images auto-slide. Click any image to view in full size.</p>
+        <p style="max-width:540px;margin:12px auto 0;color:var(--text-muted);">Workshops, seminars &amp; lab moments.
+          Click any image to enlarge.</p>
       </div>
       <div class="gallery-carousel">
         <div class="gallery-track">
@@ -2973,9 +3356,8 @@
         <div class="collab-logo"><img src="images/ses_logo.png" alt="SES Logo"></div>
         <div>
           <h3>Building the Future Together</h3>
-          <p>We partner with leading universities, tech incubators, and government research
-            bodies to grant our members exclusive access to top-tier academic facilities and funding grants across
-            Pakistan and beyond.</p>
+          <p>We partner with universities, tech incubators, and research bodies for facilities and funding across
+            Pakistan.</p>
         </div>
       </div>
 
@@ -2999,32 +3381,40 @@
       <div class="section-tag">📬 Get In Touch</div>
       <h2>Contact Us</h2>
     </div>
-    <div class="bento-grid">
-      <div class="bento-card">
-        <div class="card-icon">💬</div>
-        <h3>WhatsApp Support</h3>
-        <p>Instant answers from our coordination team — available Mon–Sat.</p>
-        <br>
-        <a href="https://wa.me/923293184739" style="color:var(--primary);font-weight:600;">+92 3293184739</a>
-      </div>
-      <div class="bento-card card-featured">
-        <div class="card-icon">📧</div>
-        <h3>Email Us</h3>
-        <p>For institutional partnerships, press inquiries, and collaborations.</p>
-        <br>
-        <a href="mailto:ses1info09@gmail.com" style="color:var(--primary);font-weight:600;">ses1info09@gmail.com</a>
-      </div>
-      <div class="bento-card">
-        <div class="card-icon">📍</div>
-        <h3>Where We Work</h3>
-        <p>Based in Hyderabad, running science programs in schools across Sindh, Pakistan.</p>
+    <div class="bento-card">
+      <div class="info-list">
+        <div class="info-row">
+          <div class="card-icon">💬</div>
+          <div>
+            <h3>WhatsApp Support</h3>
+            <p>Instant answers from our coordination team — available Mon–Sat.<br>
+              <a href="https://wa.me/923293184739" style="color:var(--primary);font-weight:600;">+92 3293184739</a>
+            </p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="card-icon">📧</div>
+          <div>
+            <h3>Email Us</h3>
+            <p>For institutional partnerships, press inquiries, and collaborations.<br>
+              <a href="mailto:ses1info09@gmail.com"
+                style="color:var(--primary);font-weight:600;">ses1info09@gmail.com</a>
+            </p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="card-icon">📍</div>
+          <div>
+            <h3>Where We Work</h3>
+            <p>Based in Hyderabad, running science programs in schools across Sindh, Pakistan.</p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="contact-banner">
       <div>
         <h2>Ready to innovate?</h2>
-        <p>Scan the QR code to instantly access the 2026 registration portal, or click the button below to register now.
-        </p>
+        <p>Scan the QR code or tap below to register now.</p>
         <br>
         <button class="btn btn-primary" onclick="goToWhatsAppRegister()">Register Now 🚀</button>
       </div>
@@ -3040,14 +3430,12 @@
     <div class="donate-banner">
       <div class="donate-banner-icon">🎓</div>
       <h3>Somewhere in Sindh, a child is waiting for their first experiment.</h3>
-      <p>For many students, science is just a picture in a textbook — they've never held a test tube or seen a
-        reaction happen with their own eyes. <strong>Rs. 1,000 is all it takes</strong> to give one child that moment.
-        Without your support, that moment may never come.</p>
+      <p><strong>Rs. 1,000</strong> gives one child their first hands-on science moment.</p>
     </div>
 
-    <div class="trust-block">
+    <div class="bento-card">
       <div class="trust-grid">
-        <div class="trust-panel">
+        <div>
           <h3><span>📊</span> Where Every Rupee Goes</h3>
           <div class="allocation-bar">
             <div class="allocation-seg" style="width:45%;background:#1d4ed8;"></div>
@@ -3056,86 +3444,71 @@
             <div class="allocation-seg" style="width:10%;background:#cbd5e1;"></div>
           </div>
           <ul class="allocation-legend">
-            <li><span class="allocation-dot" style="background:#1d4ed8;"></span> <strong>45%</strong>&nbsp;— Chemicals,
-              consumables &amp; equipment for SES Labs programs</li>
-            <li><span class="allocation-dot" style="background:#00b8ff;"></span> <strong>25%</strong>&nbsp;— Venue/area
-              rent &amp; on-ground logistics per program</li>
+            <li><span class="allocation-dot" style="background:#1d4ed8;"></span> <strong>45%</strong>&nbsp;— Chemicals
+              &amp; equipment</li>
+            <li><span class="allocation-dot" style="background:#00b8ff;"></span> <strong>25%</strong>&nbsp;— Venue &amp;
+              logistics</li>
             <li><span class="allocation-dot" style="background:#f59e0b;"></span> <strong>20%</strong>&nbsp;— Stationery
-              &amp; refreshments for students</li>
-            <li><span class="allocation-dot" style="background:#cbd5e1;"></span> <strong>10%</strong>&nbsp;— Admin
-              &amp; operations</li>
+              &amp; refreshments</li>
+            <li><span class="allocation-dot" style="background:#cbd5e1;"></span> <strong>10%</strong>&nbsp;— Admin</li>
           </ul>
         </div>
-        <div class="trust-panel">
+        <div>
           <h3><span>🎯</span> Our Current Goal — Next SES Labs Program</h3>
           <div class="goal-progress-track">
-            <div class="goal-progress-fill" id="goalFill" data-raised="20000" data-goal="150000" style="width:0%;"></div>
+            <div class="goal-progress-fill" id="goalFill" data-raised="13450" data-goal="80000" style="width:0%;">
+            </div>
           </div>
           <div class="goal-numbers">
-            <span id="goalRaisedText">Rs. 20,000 raised</span>
-            <span id="goalGoalText">of Rs. 150,000 goal</span>
+            <span id="goalRaisedText">Rs. 13450 raised</span>
+            <span id="goalGoalText">of Rs. 80,000 goal</span>
           </div>
-          <p style="margin-top:16px;font-size:0.88rem;">This fully funds our next 5–10 day SES Labs program —
-            chemicals, stationery, student refreshments, and venue rent — to bring hands-on science into a new
-            school.</p>
+          <p style="margin-top:16px;font-size:0.88rem;">Fully funds our next 5–10 day SES Labs program in a new school.
+          </p>
         </div>
       </div>
 
-      <div class="trust-badges">
-        <div class="trust-badge">
-          <div class="badge-icon">🧾</div>
-          <strong>Receipt on Every Gift</strong>
-          <p>Every donation is confirmed and logged with you directly over WhatsApp.</p>
+      <div class="badge-strip">
+        <div class="badge-strip-item"><span class="badge-icon">🧾</span> <strong>Receipt</strong>&nbsp;on every gift
         </div>
-        <div class="trust-badge">
-          <div class="badge-icon">📢</div>
-          <strong>Public Impact Updates</strong>
-          <p>We post program &amp; workshop progress to our Gallery and socials as it happens.</p>
+        <div class="badge-strip-item"><span class="badge-icon">📢</span> <strong>Public</strong>&nbsp;impact updates
         </div>
-        <div class="trust-badge">
-          <div class="badge-icon">👥</div>
-          <strong>Named Leadership</strong>
-          <p>Funds are overseen by our listed team — see the "Team" section above.</p>
-        </div>
-        <div class="trust-badge">
-          <div class="badge-icon">🔎</div>
-          <strong>Ask for a Report</strong>
-          <p>Donors and partners can request a utilization summary anytime via email.</p>
-        </div>
+        <div class="badge-strip-item"><span class="badge-icon">👥</span> <strong>Named</strong>&nbsp;leadership</div>
       </div>
     </div>
 
-    <div class="bento-grid">
-      <div class="bento-card donate-tier">
-        <div class="tier-label">Supporter</div>
-        <div class="tier-icon">🌱</div>
-        <div class="tier-amount">Rs. 1,000</div>
-        <h3>Fuel a Student's Day</h3>
-        <p>Covers chemicals, stationery, and refreshments for one student for a full day of an SES Labs program.</p>
-      </div>
-      <div class="bento-card card-featured donate-tier">
-        <span class="badge-featured">Most Impact</span>
-        <div class="tier-label">Champion</div>
-        <div class="tier-icon">🤝</div>
-        <div class="tier-amount">Rs. 5,000</div>
-        <h3>Support a Student in Need</h3>
-        <p>We don't run a formal scholarship program — instead, when a student genuinely can't afford something like
-          exam fees or a publication charge, this tier lets us step in directly and cover it for them.</p>
-      </div>
-      <div class="bento-card donate-tier">
-        <div class="tier-label">Founder Circle</div>
-        <div class="tier-icon">🏗️</div>
-        <div class="tier-amount">Rs. 15,000+</div>
-        <h3>Sponsor a Full SES Labs Program</h3>
-        <p>Covers chemicals, stationery, student refreshments, and venue rent for an entire 5–10 day SES Labs program
-          in a school.</p>
+    <div class="bento-card" style="margin-top:24px;padding:0;overflow:hidden;">
+      <div class="tier-columns">
+        <div class="tier-col">
+          <div class="tier-label">Supporter</div>
+          <div class="tier-icon">🌱</div>
+          <div class="tier-amount">Rs. 1,000</div>
+          <h3>Fuel a Student's Day</h3>
+          <p>Covers one student for a full lab day.</p>
+        </div>
+        <div class="tier-col"
+          style="background: linear-gradient(135deg, rgba(0, 184, 255, 0.08), rgba(245, 158, 11, 0.08));">
+          <span class="badge-featured" style="position:static;display:inline-block;margin-bottom:10px;">Most
+            Impact</span>
+          <div class="tier-label">Champion</div>
+          <div class="tier-icon">🤝</div>
+          <div class="tier-amount">Rs. 5,000</div>
+          <h3>Support a Student in Need</h3>
+          <p>Covers exam fees or publication charges for a student who can't afford them.</p>
+        </div>
+        <div class="tier-col">
+          <div class="tier-label">Founder Circle</div>
+          <div class="tier-icon">🏗️</div>
+          <div class="tier-amount">Rs. 15,000+</div>
+          <h3>Sponsor a Full SES Labs Program</h3>
+          <p>Funds an entire 5–10 day SES Labs program in a school.</p>
+        </div>
       </div>
     </div>
     <div class="contact-banner" style="margin-top:40px;">
       <div>
         <h2>Every rupee reaches a student.</h2>
-        <p>Choose any amount that feels right to you — there's no minimum. Tap below to see our donation methods
-          (JazzCash, EasyPaisa &amp; bank transfer) and send us a quick confirmation on WhatsApp.</p>
+        <p>Any amount helps — JazzCash, EasyPaisa &amp; bank transfer available.</p>
         <br>
         <button class="btn btn-donate" onclick="openDonateModal()">Donate Now ❤️</button>
       </div>
@@ -3471,7 +3844,6 @@
       }, 30);
     }
 
-    setupAutoSlideCarousel(document.querySelector('.process-grid'), 1.5, document.getElementById('processPrev'), document.getElementById('processNext'));
     setupAutoSlideCarousel(document.querySelector('.team-grid'), 1.5, document.getElementById('teamPrev'), document.getElementById('teamNext'));
 
 
@@ -3540,6 +3912,128 @@
         window.setTimeout(() => piece.remove(), 3600);
       }
       buzz([15, 40, 15]);
+    }
+    /* ==========================================
+       CERTIFICATE VERIFICATION LOGIC
+    =========================================== */
+
+    // SES Participants Database (Case-insensitive support later in logic)
+    const validCertificates = {
+      "SES006": { name: "SES Participant" },
+      "SES008": { name: "SES Participant" },
+      "SES010": { name: "SES Participant" },
+      "SES017": { name: "SES Participant" },
+      "SES022": { name: "SES Participant" },
+      "SES024": { name: "SES Participant" },
+      "SES026": { name: "SES Participant" },
+      "SES030": { name: "SES Participant" },
+      "SES038": { name: "SES Participant" },
+      "SES044": { name: "SES Participant" },
+      "SES061": { name: "SES Participant" },
+      "SES072": { name: "SES Participant" },
+      "SES080": { name: "SES Participant" },
+      "SES085": { name: "SES Participant" },
+      "SES086": { name: "SES Participant" },
+      "SES101": { name: "SES Participant" },
+      "SES104": { name: "SES Participant" },
+      "SES109": { name: "SES Participant" },
+      "SES110": { name: "SES Participant" },
+      "SES112": { name: "SES Participant" },
+      "SES113": { name: "SES Participant" },
+      "SES115": { name: "SES Participant" },
+      "SES117": { name: "SES Participant" },
+      "SES118": { name: "Emmad Asim" }, // Specific names added
+      "SES120": { name: "Aqsa" },       // Specific names added
+      "SES124": { name: "SES Participant" }
+    };
+
+    function verifyCertificate() {
+      const inputField = document.getElementById("rollNumberInput");
+      const verifyBtn = document.getElementById("verifyBtn");
+      const btnText = document.getElementById("btnText");
+      const btnLoader = document.getElementById("btnLoader");
+      const resultCard = document.getElementById("certResult");
+
+      // Get input and clean it (remove spaces, make uppercase for easy matching)
+      const rollNo = inputField.value.trim().toUpperCase();
+
+      if (rollNo === "") {
+        alert("Please enter a valid Roll Number!");
+        return;
+      }
+
+      // UI Loading State
+      btnText.classList.add("hidden");
+      btnLoader.classList.remove("hidden");
+      resultCard.classList.add("hidden");
+      verifyBtn.disabled = true;
+
+      // Simulate network delay for realistic verification effect
+      setTimeout(() => {
+        // Reset Button UI
+        btnText.classList.remove("hidden");
+        btnLoader.classList.add("hidden");
+        verifyBtn.disabled = false;
+
+        // Check if Roll Number exists in our database
+        if (validCertificates.hasOwnProperty(rollNo)) {
+          const studentData = validCertificates[rollNo];
+
+          // Show Success Card
+          resultCard.className = "cert-result success";
+          resultCard.innerHTML = `
+                <h3 style="color: #2ecc71; margin-bottom: 15px; text-align: left;">✅ Certificate Verified</h3>
+                <div class="cert-detail-row">
+                    <span class="cert-detail-label" style="color: var(--text-muted);">Participant Name</span>
+                    <span class="cert-detail-value" style="color: var(--text-dark);">${studentData.name}</span>
+                </div>
+                <div class="cert-detail-row">
+                    <span class="cert-detail-label" style="color: var(--text-muted);">Roll Number</span>
+                    <span class="cert-detail-value" style="color: var(--text-dark);">${rollNo}</span>
+                </div>
+                <div class="cert-detail-row">
+                    <span class="cert-detail-label" style="color: var(--text-muted);">Event</span>
+                    <span class="cert-detail-value" style="color: var(--text-dark);">AI in Education Seminar</span>
+                </div>
+                <div class="cert-detail-row">
+                    <span class="cert-detail-label" style="color: var(--text-muted);">Status</span>
+                    <span class="cert-detail-value" style="color:#2ecc71;">Officially Verified</span>
+                </div>
+                <a href="./certificates/${rollNo}.pdf" target="_blank" class="download-btn" download="${rollNo}_AI_Certificate.pdf" style="background: var(--primary); color: white; padding: 12px; border-radius: var(--radius-btn); text-align: center; display: block; margin-top: 20px; font-weight: 600;">
+                    📄 Download PDF Certificate
+                </a>
+            `;
+        } else {
+          // Show Error Card
+          resultCard.className = "cert-result error";
+          resultCard.innerHTML = `
+                <h3 style="color: #e74c3c; margin-bottom: 10px;">❌ Invalid Roll Number</h3>
+                <p style="font-size: 0.95rem; color: var(--text-muted);">We couldn't find a certificate for <b style="color: var(--text-dark);">${rollNo}</b>. Please check your roll number or contact the SES support team.</p>
+            `;
+        }
+
+        resultCard.classList.remove("hidden");
+      }, 800); // 800ms loading animation
+    }
+
+    // Allow pressing "Enter" key to verify
+    document.getElementById("rollNumberInput").addEventListener("keypress", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        verifyCertificate();
+      }
+    });
+
+    // Toggle Certificate Portal
+    function toggleCertificatePortal() {
+      const portal = document.getElementById("certificate-portal");
+      if (portal.classList.contains("hidden")) {
+        portal.classList.remove("hidden");
+        // Focus the input nicely
+        setTimeout(() => document.getElementById("rollNumberInput").focus(), 100);
+      } else {
+        portal.classList.add("hidden");
+      }
     }
   </script>
 </body>
