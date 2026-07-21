@@ -3914,38 +3914,48 @@
       buzz([15, 40, 15]);
     }
     /* ==========================================
-       CERTIFICATE VERIFICATION LOGIC
-    =========================================== */
+  /* ==========================================
+     SMART & SAFE CERTIFICATE VERIFICATION LOGIC
+  =========================================== */
 
-    // SES Participants Database (Case-insensitive support later in logic)
-    const validCertificates = {
-      "SES006": { name: "SES Participant" },
-      "SES008": { name: "SES Participant" },
-      "SES010": { name: "SES Participant" },
-      "SES017": { name: "SES Participant" },
-      "SES022": { name: "SES Participant" },
-      "SES024": { name: "SES Participant" },
-      "SES026": { name: "SES Participant" },
-      "SES030": { name: "SES Participant" },
-      "SES038": { name: "SES Participant" },
-      "SES044": { name: "SES Participant" },
-      "SES061": { name: "SES Participant" },
-      "SES072": { name: "SES Participant" },
-      "SES080": { name: "SES Participant" },
-      "SES085": { name: "SES Participant" },
-      "SES086": { name: "SES Participant" },
-      "SES101": { name: "SES Participant" },
-      "SES104": { name: "SES Participant" },
-      "SES109": { name: "SES Participant" },
-      "SES110": { name: "SES Participant" },
-      "SES112": { name: "SES Participant" },
-      "SES113": { name: "SES Participant" },
-      "SES115": { name: "SES Participant" },
-      "SES117": { name: "SES Participant" },
-      "SES118": { name: "Emmad Asim" }, // Specific names added
-      "SES120": { name: "Aqsa" },       // Specific names added
-      "SES124": { name: "SES Participant" }
-    };
+    const certificateDatabase = [
+      { id: "1", formattedRoll: "SES01", pdfFile: "SES01.pdf", name: "SES Participant" },
+      { id: "6", formattedRoll: "SES06", pdfFile: "SES06.pdf", name: "SES Participant" },
+      { id: "8", formattedRoll: "SES08", pdfFile: "SES08.pdf", name: "SES Participant" },
+      { id: "10", formattedRoll: "SES10", pdfFile: "SES10.pdf", name: "SES Participant" },
+      { id: "17", formattedRoll: "SES017", pdfFile: "SES017.pdf", name: "SES Participant" },
+      { id: "22", formattedRoll: "SES022", pdfFile: "SES022.pdf", name: "SES Participant" },
+      { id: "24", formattedRoll: "SES24", pdfFile: "SES24.pdf", name: "SES Participant" },
+      { id: "26", formattedRoll: "SES26", pdfFile: "SES26.pdf", name: "SES Participant" },
+      { id: "30", formattedRoll: "SES30", pdfFile: "SES30.pdf", name: "SES Participant" },
+      { id: "38", formattedRoll: "SES038", pdfFile: "SES038.pdf", name: "SES Participant" },
+      { id: "44", formattedRoll: "SES044", pdfFile: "SES044.pdf", name: "SES Participant" },
+      { id: "61", formattedRoll: "SES61", pdfFile: "SES61.pdf", name: "SES Participant" },
+      { id: "72", formattedRoll: "SES72", pdfFile: "SES72.pdf", name: "SES Participant" },
+      { id: "80", formattedRoll: "SES80", pdfFile: "SES80.pdf", name: "SES Participant" },
+      { id: "85", formattedRoll: "SES85", pdfFile: "SES85.pdf", name: "SES Participant" },
+      { id: "86", formattedRoll: "SES86", pdfFile: "SES86.pdf", name: "SES Participant" },
+      { id: "91", formattedRoll: "SES91", pdfFile: "SES91.pdf", name: "SES Participant" },
+      { id: "101", formattedRoll: "SES101", pdfFile: "SES101.pdf", name: "SES Participant" },
+      { id: "104", formattedRoll: "SES104", pdfFile: "SES104.pdf", name: "SES Participant" },
+      { id: "109", formattedRoll: "SES109", pdfFile: "SES109.pdf", name: "SES Participant" },
+      { id: "110", formattedRoll: "SES110", pdfFile: "SES110.pdf", name: "SES Participant" },
+      { id: "112", formattedRoll: "SES112", pdfFile: "SES112.pdf", name: "SES Participant" },
+      { id: "113", formattedRoll: "SES113", pdfFile: "SES113.pdf", name: "SES Participant" },
+      { id: "115", formattedRoll: "SES115", pdfFile: "SES115.pdf", name: "SES Participant" },
+      { id: "117", formattedRoll: "SES117", pdfFile: "SES117.pdf", name: "SES Participant" },
+      { id: "118", formattedRoll: "SES118", pdfFile: "SES118.pdf", name: "Emmad Asim" },
+      { id: "120", formattedRoll: "SES120", pdfFile: "SES120.pdf", name: "Aqsa" },
+      { id: "122", formattedRoll: "SES122", pdfFile: "SES122.pdf", name: "SES Participant" },
+      { id: "124", formattedRoll: "SES124", pdfFile: "SES124.pdf", name: "SES Participant" }
+    ];
+
+    function toggleCertificatePortal() {
+      const portal = document.getElementById("certificate-portal");
+      if (portal) {
+        portal.classList.toggle("hidden");
+      }
+    }
 
     function verifyCertificate() {
       const inputField = document.getElementById("rollNumberInput");
@@ -3954,88 +3964,99 @@
       const btnLoader = document.getElementById("btnLoader");
       const resultCard = document.getElementById("certResult");
 
-      // Get input and clean it (remove spaces, make uppercase for easy matching)
-      const rollNo = inputField.value.trim().toUpperCase();
+      if (!inputField) return;
 
-      if (rollNo === "") {
-        alert("Please enter a valid Roll Number!");
+      const rawInput = inputField.value.trim();
+
+      if (rawInput === "") {
+        alert("Please enter a Roll Number!");
         return;
       }
 
-      // UI Loading State
-      btnText.classList.add("hidden");
-      btnLoader.classList.remove("hidden");
-      resultCard.classList.add("hidden");
-      verifyBtn.disabled = true;
+      // Numbers nikalna (e.g. "ses 118" -> "118")
+      const extractedNumber = rawInput.replace(/\D/g, "");
 
-      // Simulate network delay for realistic verification effect
-      setTimeout(() => {
-        // Reset Button UI
-        btnText.classList.remove("hidden");
-        btnLoader.classList.add("hidden");
-        verifyBtn.disabled = false;
-
-        // Check if Roll Number exists in our database
-        if (validCertificates.hasOwnProperty(rollNo)) {
-          const studentData = validCertificates[rollNo];
-
-          // Show Success Card
-          resultCard.className = "cert-result success";
-          resultCard.innerHTML = `
-                <h3 style="color: #2ecc71; margin-bottom: 15px; text-align: left;">✅ Certificate Verified</h3>
-                <div class="cert-detail-row">
-                    <span class="cert-detail-label" style="color: var(--text-muted);">Participant Name</span>
-                    <span class="cert-detail-value" style="color: var(--text-dark);">${studentData.name}</span>
-                </div>
-                <div class="cert-detail-row">
-                    <span class="cert-detail-label" style="color: var(--text-muted);">Roll Number</span>
-                    <span class="cert-detail-value" style="color: var(--text-dark);">${rollNo}</span>
-                </div>
-                <div class="cert-detail-row">
-                    <span class="cert-detail-label" style="color: var(--text-muted);">Event</span>
-                    <span class="cert-detail-value" style="color: var(--text-dark);">AI in Education Seminar</span>
-                </div>
-                <div class="cert-detail-row">
-                    <span class="cert-detail-label" style="color: var(--text-muted);">Status</span>
-                    <span class="cert-detail-value" style="color:#2ecc71;">Officially Verified</span>
-                </div>
-                <a href="./certificates/${rollNo}.pdf" target="_blank" class="download-btn" download="${rollNo}_AI_Certificate.pdf" style="background: var(--primary); color: white; padding: 12px; border-radius: var(--radius-btn); text-align: center; display: block; margin-top: 20px; font-weight: 600;">
-                    📄 Download PDF Certificate
-                </a>
-            `;
-        } else {
-          // Show Error Card
+      if (!extractedNumber) {
+        if (resultCard) {
           resultCard.className = "cert-result error";
           resultCard.innerHTML = `
-                <h3 style="color: #e74c3c; margin-bottom: 10px;">❌ Invalid Roll Number</h3>
-                <p style="font-size: 0.95rem; color: var(--text-muted);">We couldn't find a certificate for <b style="color: var(--text-dark);">${rollNo}</b>. Please check your roll number or contact the SES support team.</p>
+                <h3 style="color: #e74c3c; margin-bottom: 10px;">❌ Invalid Format</h3>
+                <p style="font-size: 0.95rem; opacity: 0.9;">Please enter a valid Roll Number (e.g., <b>SES118</b> or <b>118</b>).</p>
             `;
+          resultCard.classList.remove("hidden");
         }
+        return;
+      }
 
-        resultCard.classList.remove("hidden");
-      }, 800); // 800ms loading animation
+      const numericID = parseInt(extractedNumber, 10).toString();
+
+      // UI Loading State
+      if (btnText) btnText.classList.add("hidden");
+      if (btnLoader) btnLoader.classList.remove("hidden");
+      if (resultCard) resultCard.classList.add("hidden");
+      if (verifyBtn) verifyBtn.disabled = true;
+
+      setTimeout(() => {
+        if (btnText) btnText.classList.remove("hidden");
+        if (btnLoader) btnLoader.classList.add("hidden");
+        if (verifyBtn) verifyBtn.disabled = false;
+
+        const match = certificateDatabase.find(student => student.id === numericID);
+
+        if (resultCard) {
+          if (match) {
+            resultCard.className = "cert-result success";
+            resultCard.innerHTML = `
+                    <h3 style="color: #2ecc71; margin-bottom: 15px; text-align: center;">✅ Certificate Verified</h3>
+                    <div class="cert-detail-row">
+                        <span class="cert-detail-label">Participant Name</span>
+                        <span class="cert-detail-value">${match.name}</span>
+                    </div>
+                    <div class="cert-detail-row">
+                        <span class="cert-detail-label">Roll Number</span>
+                        <span class="cert-detail-value">${match.formattedRoll}</span>
+                    </div>
+                    <div class="cert-detail-row">
+                        <span class="cert-detail-label">Event</span>
+                        <span class="cert-detail-value">AI in Education Seminar</span>
+                    </div>
+                    <div class="cert-detail-row">
+                        <span class="cert-detail-label">Status</span>
+                        <span class="cert-detail-value" style="color:#2ecc71;">Officially Verified</span>
+                    </div>
+                    <a href="./certificates/${match.pdfFile}" target="_blank" class="download-btn" download="${match.formattedRoll}_Certificate.pdf">
+                        📄 Download PDF Certificate
+                    </a>
+                `;
+          } else {
+            resultCard.className = "cert-result error";
+            resultCard.innerHTML = `
+                    <h3 style="color: #e74c3c; margin-bottom: 10px;">❌ Invalid Roll Number</h3>
+                    <p style="font-size: 0.95rem; opacity: 0.9;">No certificate found for <b>"${rawInput}"</b>. Please re-check your roll number or contact SES team.</p>
+                `;
+          }
+          resultCard.classList.remove("hidden");
+        }
+      }, 500);
     }
 
-    // Allow pressing "Enter" key to verify
-    document.getElementById("rollNumberInput").addEventListener("keypress", function (event) {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        verifyCertificate();
+    // Safely attach Event Listener after page loads completely
+    document.addEventListener("DOMContentLoaded", function () {
+      const inputField = document.getElementById("rollNumberInput");
+      if (inputField) {
+        inputField.addEventListener("keypress", function (event) {
+          if (event.key === "Enter") {
+            event.preventDefault();
+            verifyCertificate();
+          }
+        });
       }
     });
-
-    // Toggle Certificate Portal
-    function toggleCertificatePortal() {
-      const portal = document.getElementById("certificate-portal");
-      if (portal.classList.contains("hidden")) {
-        portal.classList.remove("hidden");
-        // Focus the input nicely
-        setTimeout(() => document.getElementById("rollNumberInput").focus(), 100);
-      } else {
-        portal.classList.add("hidden");
-      }
-    }
   </script>
+  <script src="script.js?v=2"></script>
+</body>
+
+</html>
 </body>
 
 </html>
